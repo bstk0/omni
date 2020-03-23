@@ -5,7 +5,8 @@ const app = express();
 app.get('/', (request, response) => {
     return response.json({ 
         evento: 'Semana OmniStack 11.0',
-        aluno: 'Rodrigo Bisterço'})
+        aluno: 'Rodrigo Bisterço',
+        data: '2020-03-23'})
 })
 
 app.listen(3333);
