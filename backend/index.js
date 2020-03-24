@@ -2,13 +2,14 @@ const express = require('express');
 
 const app = express();
 
+app.use(express.json());
 
 //app.get('/', (request, response) => {
 
-app.get('/users/:id', (request, response) => {
-    const params = request.params;
+app.post('/users', (request, response) => {
+    const body = request.body;
 
-    console.log(params);
+    console.log(body);
 
     return response.json({
         evento: 'Semana OmniStack 11.0',
