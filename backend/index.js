@@ -15,7 +15,7 @@ app.post('/users', (request, response) => {
         evento: 'Semana OmniStack 11.0',
         aluno: 'Rodrigo Bisterço',
         data: '2020-03-23',
-        comment: "VS lap Win"
+        comment: "VS lap Win.1"
     })
 })
 
