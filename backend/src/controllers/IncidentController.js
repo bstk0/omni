@@ -3,9 +3,19 @@ const connection = require('../database/connection');
 module.exports = {
 
     async index(request, response) {
-        const ongs = await connection('incidents').select('*');
+        const { page = 1 } = request.query;
 
-        return response.json(ongs);
+        const [count] = await connection('incidents').count();
+
+        const incidents = await connection('incidents')
+        .join('ongs','ongs.id','=','incidents.ong_id')
+            .limit(5)
+            .offset((page - 1) * 5)
+            .select(['incidents.*', 'ongs.name','ongs.email','ongs.whatsapp','ongs.city','ongs.uf']);
+
+        response.header('X-Total-Count', count['count(*)']);    
+
+        return response.json(incidents);
     },
 
     async create(request, response) {
@@ -36,10 +46,10 @@ module.exports = {
         //console.log("incident - id param:" + id + "/incident.ong_id:"+ incident.ong_id);
 
         if (incident.ong_id != ong_id) {
-            return response.status(401).json({ error : 'Operation not permitted.'});
+            return response.status(401).json({ error: 'Operation not permitted.' });
         }
 
-        await connection('incidents').where('id',id).delete();
+        await connection('incidents').where('id', id).delete();
 
         return response.status(204).send();
 
