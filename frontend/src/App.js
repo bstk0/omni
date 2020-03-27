@@ -9,9 +9,9 @@ function App() {
     setCounter(counter + 1);
   }
 
+  // <Header title = "Semana OmniStack" />
   return (
     <div>
-      // <Header title = "Semana OmniStack" />
       <Header>Contador: {counter}</Header>
       <button onClick={increment}>Incrementar</button>
     </div>
