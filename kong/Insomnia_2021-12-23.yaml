@@ -1,0 +1,185 @@
+_type: export
+__export_format: 4
+__export_date: 2021-12-23T17:42:56.458Z
+__export_source: insomnia.desktop.app:v2021.7.2
+resources:
+  - _id: req_wrk_62a2f39913264fc5982345786d2d73cd6027a994
+    parentId: wrk_62a2f39913264fc5982345786d2d73cd
+    modified: 1640280978808
+    created: 1640280978808
+    url: "{{ base_url }}/api/books"
+    name: /api/books
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1640280978808
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: wrk_62a2f39913264fc5982345786d2d73cd
+    parentId: null
+    modified: 1640280872547
+    created: 1640280872547
+    name: my-spec-kong.yaml
+    description: ""
+    scope: design
+    _type: workspace
+  - _id: req_wrk_62a2f39913264fc5982345786d2d73cdaeb45d71
+    parentId: wrk_62a2f39913264fc5982345786d2d73cd
+    modified: 1640280978806
+    created: 1640280978806
+    url: "{{ base_url }}/api/book/{{ id }}"
+    name: /api/book/{id}
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1640280978806
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_wrk_62a2f39913264fc5982345786d2d73cd8c4650e5
+    parentId: wrk_62a2f39913264fc5982345786d2d73cd
+    modified: 1640280978804
+    created: 1640280978804
+    url: "{{ base_url }}/api/book/{{ id }}"
+    name: /api/book/{id}
+    description: ""
+    method: DELETE
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1640280978804
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_wrk_62a2f39913264fc5982345786d2d73cd3d7a576c
+    parentId: wrk_62a2f39913264fc5982345786d2d73cd
+    modified: 1640280978802
+    created: 1640280978802
+    url: "{{ base_url }}/api/book"
+    name: /api/book
+    description: ""
+    method: POST
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1640280978802
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: env_a2082566c71d4e07fcef4754b81c8cff12c6118d
+    parentId: wrk_62a2f39913264fc5982345786d2d73cd
+    modified: 1640280872558
+    created: 1640280872558
+    name: Base Environment
+    data:
+      base_url: "{{ scheme }}://{{ host }}{{ base_path }}"
+    dataPropertyOrder: null
+    color: null
+    isPrivate: false
+    metaSortKey: 1640280872558
+    _type: environment
+  - _id: jar_a2082566c71d4e07fcef4754b81c8cff12c6118d
+    parentId: wrk_62a2f39913264fc5982345786d2d73cd
+    modified: 1640280872560
+    created: 1640280872560
+    name: Default Jar
+    cookies: []
+    _type: cookie_jar
+  - _id: spc_dfb63d0e97c94e39904ee9b8db287f39
+    parentId: wrk_62a2f39913264fc5982345786d2d73cd
+    modified: 1640280978818
+    created: 1640280872551
+    fileName: my-spec-kong.yaml
+    contents: |
+      openapi: 3.0.0
+      info:
+        version: 1.0.0
+        title: Sample API
+        description: A sample API to illustrate OpenAPI concepts
+      servers:
+        - url: http://localhost:3000
+      paths:
+        /api/books:
+          get:
+            description: Returns a list of books
+            responses:
+              "200":
+                description: Successfully retrieved books
+        /api/book/{id}:
+          get:
+            description: Returns a single book
+            parameters:
+              - name: id
+                in: path
+                description: Book ID
+                required: true
+                schema:
+                  type: integer
+                  format: int
+            responses:
+              "200":
+                description: Successfully retrieved one book
+          delete:
+            description: Removes a single book
+            parameters:
+              - name: id
+                in: path
+                description: Book ID
+                required: true
+                schema:
+                  type: integer
+                  format: int
+            responses:
+              "200":
+                description: Successfully removed one book
+        /api/book:
+          post:
+            description: Adds a new books
+            responses:
+              "200":
+                description: Successfully added a book
+    contentType: yaml
+    _type: api_spec
+  - _id: env_env_a2082566c71d4e07fcef4754b81c8cff12c6118d_sub
+    parentId: env_a2082566c71d4e07fcef4754b81c8cff12c6118d
+    modified: 1640280978811
+    created: 1640280978811
+    name: OpenAPI env
+    data:
+      scheme: http
+      base_path: ""
+      host: localhost:3000
+    dataPropertyOrder: null
+    color: null
+    isPrivate: false
+    metaSortKey: 1640280978811
+    _type: environment
